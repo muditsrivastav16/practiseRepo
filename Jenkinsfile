@@ -3,7 +3,8 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo 'Executing Java here'
+				batchFile 'javac CheckPiple.java'
+				batchFile 'java CheckPipeline'
 			}
 		}
 	}
