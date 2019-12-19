@@ -4,8 +4,8 @@ pipeline {
 		stage('Build') {
 			steps {
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: 'master'])
-				javac CheckPipeline.java
-				java CheckPipeline
+				bat label: '', script: '''javac CheckPipeline.java'''
+				bat label: '', script: '''java CheckPipeline'''
 			}
 		}
 	}
