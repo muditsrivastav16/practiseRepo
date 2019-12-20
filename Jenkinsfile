@@ -30,4 +30,8 @@ pipeline {
 			}
 		}
 	}
+	
+	post {
+		archiveArtifacts(artifacts: 'hybris/temp/hybris/hybrisServer/**', defaultExcludes: true, caseSensitive: true)
+	}
 }
