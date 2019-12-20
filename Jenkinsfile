@@ -7,6 +7,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				currentBuild.description = "This should be in Description"
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: 'master'])
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
