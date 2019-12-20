@@ -2,6 +2,7 @@ pipeline {
 	agent { 
 		node {
 			label 'master'
+			currentBuild.description = 'This is the Description'
 		}
 	}
 	stages {
