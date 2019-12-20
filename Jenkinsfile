@@ -23,7 +23,7 @@ pipeline {
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: 'master'])
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
-				sh rm -rf hybris
+				//sh rm -rf hybris
 			}
 		}
 	}
