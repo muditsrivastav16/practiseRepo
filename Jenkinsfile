@@ -26,7 +26,7 @@ pipeline {
 				//sh rm -rf hybris
 				//copyArtifacts(projectName: 'infra-ci-build', selector: lastSuccessful, filter: 'hybris/temp/hybris/hybrisServer/**', fingerprintArtifacts: true)                    
 				//load 'hybris/temp/hybris/hybrisServer/HybrisJenkinsBuildInfo.txt'
-				load 'C:\\Jenkinsfile'
+				load 'C:\\Jenkinsfile.txt'
 			}
 		}
 	}
