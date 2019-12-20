@@ -11,7 +11,7 @@ pipeline {
 	
 	parameters {
 		choice(name: 'ENVIRONMENT', choices: ['infra'], description: 'There has to be only one option here')
-		choice(name: 'DB_MIGRATION', choices: ['updatesystem', 'none', 'initialize'])
+		choice(name: 'DB_MIGRATION', choices: ['updatesystem', 'none', 'initialize'], description: 'Select DB Migration')
 		booleanParam(name: 'SOLR_DEPLOY', defaultValue: true, description: 'Deploy Solr')
 	}
 	
