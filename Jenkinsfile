@@ -5,7 +5,7 @@ pipeline {
 		}
 	}
 	
-	parameter {
+	parameters {
 		string(name: 'BUILD_BRANCH', default: 'executingjava', description: 'Branch name that will build')	
 	}
 	
