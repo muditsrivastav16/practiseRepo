@@ -1,9 +1,12 @@
 pipeline {
-	agent { 
+	agent any 
+	/*{ 
 		node {
 			label 'master'
 		}
 	}
+	*/
+	
 	/*
 	parameters {
 		choice(name: 'ENVIRONMENT', choices: ['infra'], description: '<font color="DarkRed">There has to be only one option here</font>')
