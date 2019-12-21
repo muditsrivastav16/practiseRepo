@@ -6,7 +6,7 @@ pipeline {
 	}
 	
 	parameters {
-		string(name: 'BUILD_BRANCH', default: 'executingjava', description: 'Branch name that will build')	
+		string(name: 'BUILD_BRANCH', defaultValue: 'executingjava', description: 'Branch name that will build')	
 	}
 	
 	stages {
