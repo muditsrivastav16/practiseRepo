@@ -17,6 +17,10 @@ pipeline {
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: "${params.BUILD_BRANCH}"])
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
+				
+				withPythonEnv('CPython-3.5.2') {
+					sh 'echo Hello'
+				}
 			}
 		}
 	}
