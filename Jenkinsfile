@@ -14,7 +14,7 @@ pipeline {
 			steps {
 				echo 'Fetching code from github'
 				bat 'hostname'
-				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: '${params.BUILD_BRANCH}'])
+				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: ${params.BUILD_BRANCH}])
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
 			}
