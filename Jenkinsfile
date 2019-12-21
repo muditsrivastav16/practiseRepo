@@ -9,6 +9,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo 'Fetching code from github'
+				bat 'hostname'
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: 'executingjava'])
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
