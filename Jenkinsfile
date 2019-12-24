@@ -18,6 +18,8 @@ pipeline {
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline'
 				
+// This comment line should be deleted after the hard reset.
+
 				withPythonEnv('CPython-3.5.2') {
 					sh 'echo Hello'
 				}
