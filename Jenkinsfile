@@ -20,9 +20,9 @@ pipeline {
 				
 // This comment line should be deleted after the hard reset.
 
-				withPythonEnv('CPython-3.5.2') {
-					sh 'echo Hello'
-				}
+//				withPythonEnv('CPython-3.5.2') {
+//					sh 'echo Hello'
+//				}
 			}
 		}
 	}
