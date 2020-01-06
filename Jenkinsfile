@@ -5,10 +5,6 @@ pipeline {
 		}
 	}
 
-	environment {
-		envVariable = 'envValue'
-	}
-	
 	options {
 		buildDiscarder(logRotator(numToKeepStr: '2'))
 		ansiColor('xterm')
