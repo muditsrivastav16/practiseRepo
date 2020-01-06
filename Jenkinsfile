@@ -13,6 +13,10 @@ pipeline {
 	parameters {
 		string(name: 'DEPLOY_BRANCH', defaultValue: 'practise', description: 'Branch Name')
 	}
+
+	environment {
+		env.myname = 'Mudit'
+	}
 	
 	stages {
 		stage('Input') {
@@ -53,6 +57,8 @@ pipeline {
 				bat 'javac CheckPipeline.java'
 				bat 'java CheckPipeline !'
 				echo "${userInput}"
+				echo "${myname}"
+				echo "${env.myname}"
 
 				
 				//sh rm -rf hybris
