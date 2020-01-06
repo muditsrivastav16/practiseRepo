@@ -20,13 +20,6 @@ pipeline {
 	}
 	
 	stages {
-		stage('Input') {
-			steps {
-
-				
-			}
-		}
-
 		stage('Build') {
 			steps {
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: "${params.DEPLOY_BRANCH}"])
