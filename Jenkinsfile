@@ -15,7 +15,7 @@ pipeline {
 	}
 
 	environment {
-		myname = 'Mudit'
+		MYNAME = 'Mudit'
 	}
 	
 	stages {
