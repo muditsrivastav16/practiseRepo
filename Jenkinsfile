@@ -16,37 +16,14 @@ pipeline {
 
 	environment {
 		MYNAME = 'Mudit'
+		MVNARTIFACTS = get_MVN_Artifacts()
 	}
 	
 	stages {
 		stage('Input') {
 			steps {
 
-				script {
-					userInput = input(
-						id: "userInput",
-						message: "choose jar version",
-						parameters: [[
-							$class: "MavenMetadataParameterDefinition",
-							name: "version",
-							description: "List Maven Artifacts Versions",
-							repoBaseUrl: "",
-							groupId: "",
-							artifactId: "",
-							packaging: "",
-							defaultValue: "",
-							classifier: "",
-							versionFilter: "",
-							sortOrder: "DESC",
-							maxVersions: "",
-							currentArtifactInfoUrl: "",
-							currentArtifactInfoLabel: "",
-							currentArtifactInfoPattern: "",
-							credentialId: ""
-						]],
-					)
-					print(userInput)
-				}
+				
 			}
 		}
 
@@ -76,4 +53,32 @@ pipeline {
 	//		archiveArtifacts(artifacts: 'hybris/temp/hybris/hybrisServer/**', defaultExcludes: true, caseSensitive: true)
 	//	}
 	//}
+}
+def get_MVN_Artifacts() {
+	script {
+		userInput = input(
+			id: "userInput",
+			message: "choose jar version",
+			parameters: [[
+				$class: "MavenMetadataParameterDefinition",
+				name: "version",
+				description: "List Maven Artifacts Versions",
+				repoBaseUrl: "",
+				groupId: "",
+				artifactId: "",
+				packaging: "",
+				defaultValue: "",
+				classifier: "",
+				versionFilter: "",
+				sortOrder: "DESC",
+				maxVersions: "",
+				currentArtifactInfoUrl: "",
+				currentArtifactInfoLabel: "",
+				currentArtifactInfoPattern: "",
+				credentialId: ""
+			]],
+		)
+		print(userInput)
+	}
+	return ("${userInput}")
 }
