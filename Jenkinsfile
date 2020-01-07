@@ -15,20 +15,62 @@ pipeline {
 	}
 
 	environment {
-		MYNAME = 'Mudit'
-		MVNARTIFACTS = get_MVN_Artifacts()
+		NAME = "HYBRIS"
+		DESCRIPTION = "Choose Hybris Release"
+		REPOSITORYBASEURL = "http://repo.y.balsamhill.com:8081/nexus/content/repositories/release"
+		REPOSITORYCREDENTIALS = "nexusdeployer"
+		ARTIFACTGROUPID = "com.balsam"
+		ARTIFACTID = "hybris_platform"
+		PACKAGING = "zip"
+		DEFAULTVALUE = "LATEST"
+		SORTINGORDER = "DESC"
 	}
 	
 	stages {
 		stage('Build') {
 			steps {
 				git([url: 'https://github.com/muditsrivastav16/practiseRepo.git', branch: "${params.DEPLOY_BRANCH}"])
+
+				script {
+					userInput = input(
+						id: "userInput",
+						message: "choose jar version",
+						parameters: [[
+							$class: "MavenMetadataParameterDefinition",
+							name: "${NAME}",
+							description: "${DESCRIPRION}",
+							repoBaseUrl: "${REPOSITORYBASEURL}",
+							groupId: "${ARTIFACTGROUPID}",
+							artifactId: "${ARTIFACTID}",
+							packaging: "${PACKAGING}",
+							defaultValue: "${DEFAULTVALUE}",
+							classifier: "",
+							versionFilter: "",
+							sortOrder: "${SORTINGORDER}",
+							maxVersions: "",
+							currentArtifactInfoUrl: "",
+							currentArtifactInfoLabel: "",
+							currentArtifactInfoPattern: "",
+							credentialId: "${REPOSITORYCREDENTIALS}"
+							]],
+						)
+					print(userInput)
+				}
+
+
+				echo "${NAME}"
+				echo "${DESCRIPRION}"
+				echo "${REPOSITORYBASEURL}"
+				echo "${REPOSITORYCREDENTIALS}"
+				echo "${ARTIFACTGROUPID}"
+				echo "${ARTIFACTID}"
+				echo "${PACKAGING}"
+				echo "${DEFAULTVALUE}"
+				echo "${SORTINGORDER}"
+
+
 				bat 'sh ShellScript.sh'
-				bat 'javac CheckPipeline.java'
-				bat 'java CheckPipeline !'
-				echo "${userInput}"
-				echo "${myname}"
-				echo "${env.myname}"
+				
 
 				
 				//sh rm -rf hybris
@@ -46,32 +88,4 @@ pipeline {
 	//		archiveArtifacts(artifacts: 'hybris/temp/hybris/hybrisServer/**', defaultExcludes: true, caseSensitive: true)
 	//	}
 	//}
-}
-def get_MVN_Artifacts() {
-	script {
-		userInput = input(
-			id: "userInput",
-			message: "choose jar version",
-			parameters: [[
-				$class: "MavenMetadataParameterDefinition",
-				name: "version",
-				description: "List Maven Artifacts Versions",
-				repoBaseUrl: "",
-				groupId: "",
-				artifactId: "",
-				packaging: "",
-				defaultValue: "",
-				classifier: "",
-				versionFilter: "",
-				sortOrder: "DESC",
-				maxVersions: "",
-				currentArtifactInfoUrl: "",
-				currentArtifactInfoLabel: "",
-				currentArtifactInfoPattern: "",
-				credentialId: ""
-			]],
-		)
-		print(userInput)
-	}
-	return ("${userInput}")
 }
