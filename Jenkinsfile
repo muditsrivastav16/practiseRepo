@@ -16,7 +16,7 @@ pipeline {
 
 	environment {
 		NAME = "HYBRIS"
-		DESCRIPTION = "Choose Hybris Release"
+		//DESCRIPTION = "Choose Hybris Release"
 		REPOSITORYBASEURL = "http://repo.y.balsamhill.com:8081/nexus/content/repositories/release"
 		REPOSITORYCREDENTIALS = "nexusdeployer"
 		ARTIFACTGROUPID = "com.balsam"
@@ -38,7 +38,7 @@ pipeline {
 						parameters: [[
 							$class: "MavenMetadataParameterDefinition",
 							name: "${NAME}",
-							description: "${DESCRIPRION}",
+							description: "choose hybris release", //"${DESCRIPRION}",
 							repoBaseUrl: "${REPOSITORYBASEURL}",
 							groupId: "${ARTIFACTGROUPID}",
 							artifactId: "${ARTIFACTID}",
